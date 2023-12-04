@@ -1,9 +1,12 @@
 import torch
 import torch.nn as nn
-from inf721_dataset import get_data_loaders
 from inf721_model import MusicEmotionClassifierNet
 
-train_loader, test_loader, val_loader = get_data_loaders()
+# Load data loaders from the saved file
+loaders_path = './dataloaders.pth'
+saved_data = torch.load(loaders_path)
+train_loader = saved_data['train_loader']
+test_loader = saved_data['test_loader']
 
 def calc_test_loss(model, dataloader, loss_function):
   with torch.no_grad():
