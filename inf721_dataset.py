@@ -7,6 +7,9 @@ import librosa
 from torch.utils.data import Dataset, Subset, DataLoader
 from sklearn.model_selection import train_test_split
 
+import warnings
+warnings.filterwarnings("ignore", message="librosa.core.audio.__audioread_load")
+
 class AudioDataset(Dataset):
     def __init__(self, audio_folder, target_sample_rate=8000, transform=None):
         self.audio_folder = audio_folder
@@ -33,7 +36,6 @@ class AudioDataset(Dataset):
         else:
             chroma = F.pad(chroma, (0, max_time_dimension - chroma.shape[1]))
 
-        print(chroma, cluster)
         return chroma, int(cluster)
         
 
