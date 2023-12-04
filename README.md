@@ -8,6 +8,8 @@ Este repositório contém o código-fonte para reproduzir os resultados do traba
 pip install torch torchaudio librosa scikit-learn
 ```
 
+## Replicando os Resultados
+
 **1. Criando Database**
 
 ```
